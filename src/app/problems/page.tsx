@@ -8,6 +8,12 @@ import { Button } from "@/components/ui/button"
 import { ArrowUpDown, Grid, List } from "lucide-react"
 
 export default function ProblemsPage() {
+  // Add error boundary
+  if (typeof window !== 'undefined') {
+    window.addEventListener('error', (e) => {
+      console.error('Problems page error:', e.error)
+    })
+  }
   const [filters, setFilters] = useState({
     search: "",
     difficulty: "",
@@ -19,41 +25,51 @@ export default function ProblemsPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
 
   const filteredProblems = useMemo(() => {
-    return problems.filter(problem => {
-      const matchesSearch = problem.title.toLowerCase().includes(filters.search.toLowerCase()) ||
-                           problem.description.toLowerCase().includes(filters.search.toLowerCase())
-      const matchesDifficulty = !filters.difficulty || problem.difficulty === filters.difficulty
-      const matchesCategory = !filters.category || problem.category === filters.category
-      const matchesCompany = !filters.company || problem.companies.includes(filters.company)
+    try {
+      return problems.filter(problem => {
+        const matchesSearch = problem.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+                             problem.description.toLowerCase().includes(filters.search.toLowerCase())
+        const matchesDifficulty = !filters.difficulty || problem.difficulty === filters.difficulty
+        const matchesCategory = !filters.category || problem.category === filters.category
+        const matchesCompany = !filters.company || problem.companies.includes(filters.company)
 
-      return matchesSearch && matchesDifficulty && matchesCategory && matchesCompany
-    })
+        return matchesSearch && matchesDifficulty && matchesCategory && matchesCompany
+      })
+    } catch (error) {
+      console.error("Error filtering problems:", error)
+      return []
+    }
   }, [filters])
 
   const sortedProblems = useMemo(() => {
-    return [...filteredProblems].sort((a, b) => {
-      let comparison = 0
-      
-      switch (sortBy) {
-        case "title":
-          comparison = a.title.localeCompare(b.title)
-          break
-        case "difficulty":
-          const difficultyOrder = { Easy: 1, Medium: 2, Hard: 3 }
-          comparison = difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]
-          break
-        case "acceptanceRate":
-          comparison = a.acceptanceRate - b.acceptanceRate
-          break
-        case "companies":
-          comparison = a.companies.length - b.companies.length
-          break
-        default:
-          comparison = 0
-      }
-      
-      return sortOrder === "asc" ? comparison : -comparison
-    })
+    try {
+      return [...filteredProblems].sort((a, b) => {
+        let comparison = 0
+        
+        switch (sortBy) {
+          case "title":
+            comparison = a.title.localeCompare(b.title)
+            break
+          case "difficulty":
+            const difficultyOrder = { Easy: 1, Medium: 2, Hard: 3 }
+            comparison = difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]
+            break
+          case "acceptanceRate":
+            comparison = a.acceptanceRate - b.acceptanceRate
+            break
+          case "companies":
+            comparison = a.companies.length - b.companies.length
+            break
+          default:
+            comparison = 0
+        }
+        
+        return sortOrder === "asc" ? comparison : -comparison
+      })
+    } catch (error) {
+      console.error("Error sorting problems:", error)
+      return filteredProblems
+    }
   }, [filteredProblems, sortBy, sortOrder])
 
   const toggleSortOrder = () => {
