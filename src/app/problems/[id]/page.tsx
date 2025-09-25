@@ -57,19 +57,66 @@ export default function ProblemPage() {
     
     for (const testCase of problem.testCases) {
       try {
-        // This is a simplified test runner - in reality you'd need a proper JavaScript execution environment
         const startTime = Date.now()
         
-        // For demo purposes, we'll simulate different outcomes
-        const randomPass = Math.random() > 0.3 // 70% pass rate for demo
-        const actualOutput = randomPass ? testCase.expectedOutput : "Error"
+        // Try to execute the user's code with the test case
+        let actualOutput: any
+        let passed = false
+        
+        try {
+          // Create a safe execution context
+          const func = new Function('return ' + code)()
+          
+          // Extract input parameters based on the problem
+          let result: any
+          if (problem.id === 'two-sum') {
+            const { nums, target } = testCase.input
+            result = func(nums, target)
+          } else if (problem.id === 'add-two-numbers') {
+            // For linked list problems, we'd need more complex handling
+            result = "Linked list execution not supported in demo"
+          } else if (problem.id === 'longest-substring-without-repeating-characters') {
+            result = func(testCase.input.s)
+          } else if (problem.id === 'median-of-two-sorted-arrays') {
+            result = func(testCase.input.nums1, testCase.input.nums2)
+          } else if (problem.id === 'longest-palindromic-substring') {
+            result = func(testCase.input.s)
+          } else if (problem.id === 'zigzag-conversion') {
+            result = func(testCase.input.s, testCase.input.numRows)
+          } else if (problem.id === 'reverse-integer') {
+            result = func(testCase.input.x)
+          } else if (problem.id === 'valid-parentheses') {
+            result = func(testCase.input.s)
+          } else if (problem.id === 'climbing-stairs') {
+            result = func(testCase.input.n)
+          } else if (problem.id === 'maximum-subarray') {
+            result = func(testCase.input.nums)
+          } else {
+            // Generic handling for other problems
+            result = "Demo mode - execution not fully implemented"
+          }
+          
+          actualOutput = result
+          
+          // Compare outputs (handle different data types)
+          if (Array.isArray(result) && Array.isArray(testCase.expectedOutput)) {
+            passed = JSON.stringify(result.sort()) === JSON.stringify(testCase.expectedOutput.sort())
+          } else {
+            passed = result === testCase.expectedOutput
+          }
+          
+        } catch (execError) {
+          actualOutput = `Runtime Error: ${execError}`
+          passed = false
+        }
+        
         const runtime = Date.now() - startTime
         
         results.push({
           input: testCase.input,
           expectedOutput: testCase.expectedOutput,
           actualOutput,
-          passed: randomPass,
+          passed,
           runtime
         })
       } catch (error) {
