@@ -10,32 +10,32 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white shadow-sm">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
               <BookOpen className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">
+            <span className="text-xl font-bold text-gray-900">
               William's LeetCode Premium
             </span>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/problems" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors">
+            <Link href="/problems" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
               Problems
             </Link>
-            <Link href="/companies" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors">
+            <Link href="/companies" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
               Companies
             </Link>
-            <Link href="/contests" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors">
+            <Link href="/contests" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
               Contests
             </Link>
-            <Link href="/discuss" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors">
+            <Link href="/discuss" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
               Discuss
             </Link>
-            <Link href="/sources" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors">
+            <Link href="/sources" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
               Sources
             </Link>
           </nav>
@@ -80,19 +80,19 @@ export function Header() {
               />
             </div>
             <nav className="flex flex-col space-y-2">
-              <Link href="/problems" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors py-2">
+              <Link href="/problems" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors py-2">
                 Problems
               </Link>
-              <Link href="/companies" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors py-2">
+              <Link href="/companies" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors py-2">
                 Companies
               </Link>
-              <Link href="/contests" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors py-2">
+              <Link href="/contests" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors py-2">
                 Contests
               </Link>
-              <Link href="/discuss" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors py-2">
+              <Link href="/discuss" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors py-2">
                 Discuss
               </Link>
-              <Link href="/sources" className="text-sm font-medium text-slate-700 hover:text-purple-600 transition-colors py-2">
+              <Link href="/sources" className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors py-2">
                 Sources
               </Link>
             </nav>

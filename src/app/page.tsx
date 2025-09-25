@@ -31,35 +31,36 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg-primary"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-100/30 via-purple-100/30 to-blue-100/30"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl font-bold mb-6 gradient-text">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-xl mb-6">
+              <BookOpen className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-5xl font-bold mb-6 text-gray-900">
               William's LeetCode Premium
             </h1>
-            <h2 className="text-3xl font-semibold mb-4 text-slate-700">
+            <h2 className="text-2xl font-medium mb-4 text-gray-600">
               Master Coding Interviews
             </h2>
-            <p className="text-xl text-slate-600 mb-8">
+            <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto">
               Practice with real interview questions from top tech companies. 
               Build confidence and land your dream job.
             </p>
-            <div className="mb-6">
-              <Link href="/sources" className="inline-flex items-center text-sm text-purple-600 hover:text-purple-700 transition-colors">
-                <CheckCircle className="h-4 w-4 mr-1" />
+            <div className="mb-8">
+              <Link href="/sources" className="inline-flex items-center text-sm text-blue-600 hover:text-blue-700 transition-colors font-medium">
+                <CheckCircle className="h-4 w-4 mr-2" />
                 Verified problems from real interviews
               </Link>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="gradient-button text-slate-700 font-semibold hover:text-slate-800">
+              <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
                 <Link href="/problems">
                   Start Practicing
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="bg-white/80 backdrop-blur-sm border-pink-200 text-slate-700 hover:bg-white/90">
+              <Button size="lg" variant="outline" asChild className="border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-3 rounded-lg transition-colors">
                 <Link href="/companies">
                   Browse by Company
                 </Link>
@@ -70,73 +71,71 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg-secondary"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center gradient-card p-6 rounded-xl">
+            <div className="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="text-3xl font-bold text-blue-600 mb-2">{stats.totalProblems}</div>
-              <div className="text-slate-600 font-medium">Problems</div>
+              <div className="text-gray-600 font-medium">Problems</div>
             </div>
-            <div className="text-center gradient-card p-6 rounded-xl">
+            <div className="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="text-3xl font-bold text-purple-600 mb-2">{stats.companies}</div>
-              <div className="text-slate-600 font-medium">Companies</div>
+              <div className="text-gray-600 font-medium">Companies</div>
             </div>
-            <div className="text-center gradient-card p-6 rounded-xl">
+            <div className="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="text-3xl font-bold text-green-600 mb-2">{stats.easyProblems}</div>
-              <div className="text-slate-600 font-medium">Easy</div>
+              <div className="text-gray-600 font-medium">Easy</div>
             </div>
-            <div className="text-center gradient-card p-6 rounded-xl">
+            <div className="text-center bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="text-3xl font-bold text-yellow-600 mb-2">{stats.mediumProblems}</div>
-              <div className="text-slate-600 font-medium">Medium</div>
+              <div className="text-gray-600 font-medium">Medium</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg-accent"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="bg-white py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-slate-800">Why Choose Our Platform?</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Why Choose Our Platform?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We provide everything you need to succeed in technical interviews
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="gradient-card">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <div className="h-12 w-12 bg-gradient-to-br from-blue-200 to-blue-300 rounded-lg flex items-center justify-center mb-4">
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <BookOpen className="h-6 w-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-slate-800">Real Interview Questions</CardTitle>
-                <CardDescription className="text-slate-600">
+                <CardTitle className="text-gray-900">Real Interview Questions</CardTitle>
+                <CardDescription className="text-gray-600">
                   Practice with actual questions asked by top tech companies
                 </CardDescription>
               </CardHeader>
             </Card>
             
-            <Card className="gradient-card">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <div className="h-12 w-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-lg flex items-center justify-center mb-4">
+                <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                   <Zap className="h-6 w-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-slate-800">Instant Feedback</CardTitle>
-                <CardDescription className="text-slate-600">
+                <CardTitle className="text-gray-900">Instant Feedback</CardTitle>
+                <CardDescription className="text-gray-600">
                   Get immediate results and detailed explanations for your solutions
                 </CardDescription>
               </CardHeader>
             </Card>
             
-            <Card className="gradient-card">
+            <Card className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <CardHeader>
-                <div className="h-12 w-12 bg-gradient-to-br from-green-200 to-green-300 rounded-lg flex items-center justify-center mb-4">
+                <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <TrendingUp className="h-6 w-6 text-green-600" />
                 </div>
-                <CardTitle className="text-slate-800">Track Progress</CardTitle>
-                <CardDescription className="text-slate-600">
+                <CardTitle className="text-gray-900">Track Progress</CardTitle>
+                <CardDescription className="text-gray-600">
                   Monitor your improvement with detailed analytics and statistics
                 </CardDescription>
               </CardHeader>
@@ -146,19 +145,18 @@ export default function HomePage() {
       </section>
 
       {/* Featured Problems */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg-primary"></div>
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-slate-800">Featured Problems</h2>
-            <p className="text-slate-600">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Featured Problems</h2>
+            <p className="text-gray-600">
               Start with these popular problems from top companies
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProblems.map((problem) => (
-              <Card key={problem.id} className="gradient-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card key={problem.id} className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <CardTitle className="text-lg">
@@ -230,7 +228,7 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-8">
-            <Button size="lg" asChild className="gradient-button text-slate-700 font-semibold">
+            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
               <Link href="/problems">
                 View All Problems
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -241,15 +239,13 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-600"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+      <section className="bg-blue-600 py-16">
+        <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 text-white">Ready to Ace Your Next Interview?</h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-blue-100">
             Join thousands of developers who have landed their dream jobs
           </p>
-          <Button size="lg" className="bg-white/90 text-slate-800 hover:bg-white font-semibold" asChild>
+          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors" asChild>
             <Link href="/problems">
               Get Started Today
               <ArrowRight className="ml-2 h-4 w-4" />
