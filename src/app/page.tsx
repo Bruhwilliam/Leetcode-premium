@@ -54,17 +54,13 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
-                <Link href="/problems">
-                  Start Practicing
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-3 rounded-lg transition-colors">
-                <Link href="/companies">
-                  Browse by Company
-                </Link>
-              </Button>
+              <Link href="/problems" className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+                Start Practicing
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link href="/companies" className="inline-flex items-center justify-center border border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-3 rounded-lg transition-colors">
+                Browse by Company
+              </Link>
             </div>
           </div>
         </div>
@@ -228,12 +224,10 @@ export default function HomePage() {
           </div>
           
           <div className="text-center mt-8">
-            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
-              <Link href="/problems">
-                View All Problems
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Link href="/problems" className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+              View All Problems
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -245,12 +239,10 @@ export default function HomePage() {
           <p className="text-xl mb-8 text-blue-100">
             Join thousands of developers who have landed their dream jobs
           </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors" asChild>
-            <Link href="/problems">
-              Get Started Today
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <Link href="/problems" className="inline-flex items-center justify-center bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg transition-colors">
+            Get Started Today
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

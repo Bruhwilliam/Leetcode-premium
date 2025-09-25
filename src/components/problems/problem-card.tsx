@@ -21,7 +21,7 @@ export function ProblemCard({ problem }: ProblemCardProps) {
             <CardTitle className="text-lg font-semibold mb-2">
               <Link 
                 href={`/problems/${problem.id}`}
-                className="hover:text-primary transition-colors"
+                className="hover:text-blue-600 transition-colors"
               >
                 {problem.title}
               </Link>
@@ -84,11 +84,12 @@ export function ProblemCard({ problem }: ProblemCardProps) {
               {problem.relatedTopics.slice(0, 2).join(", ")}
               {problem.relatedTopics.length > 2 && "..."}
             </div>
-            <Button size="sm" asChild>
-              <Link href={`/problems/${problem.id}`}>
-                Solve
-              </Link>
-            </Button>
+            <Link 
+              href={`/problems/${problem.id}`}
+              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-3 py-1.5 rounded transition-colors"
+            >
+              Solve
+            </Link>
           </div>
         </div>
       </CardContent>
