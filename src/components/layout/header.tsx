@@ -18,7 +18,7 @@ export function Header() {
               <BookOpen className="h-5 w-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              LeetCode Premium
+              William's LeetCode Premium
             </span>
           </Link>
           
@@ -34,6 +34,9 @@ export function Header() {
             </Link>
             <Link href="/discuss" className="text-sm font-medium hover:text-primary transition-colors">
               Discuss
+            </Link>
+            <Link href="/sources" className="text-sm font-medium hover:text-primary transition-colors">
+              Sources
             </Link>
           </nav>
         </div>
@@ -88,6 +91,9 @@ export function Header() {
               </Link>
               <Link href="/discuss" className="text-sm font-medium hover:text-primary transition-colors py-2">
                 Discuss
+              </Link>
+              <Link href="/sources" className="text-sm font-medium hover:text-primary transition-colors py-2">
+                Sources
               </Link>
             </nav>
           </div>

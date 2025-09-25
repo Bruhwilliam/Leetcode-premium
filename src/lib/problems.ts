@@ -749,6 +749,193 @@ Assume the environment does not allow you to store 64-bit integers (signed or un
     ],
     relatedTopics: ["Math"],
     premium: false
+  },
+  {
+    id: "valid-parentheses",
+    title: "Valid Parentheses",
+    difficulty: "Easy",
+    category: "String",
+    companies: ["Amazon", "Google", "Microsoft", "Meta (Facebook)", "Apple", "Bloomberg", "Plaid", "Capital One"],
+    acceptanceRate: 37.8,
+    description: `Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+1. Open brackets must be closed by the same type of brackets.
+2. Open brackets must be closed in the correct order.
+3. Every close bracket has a corresponding open bracket of the same type.`,
+    examples: [
+      {
+        input: 's = "()"',
+        output: "true"
+      },
+      {
+        input: 's = "()[]{}"',
+        output: "true"
+      },
+      {
+        input: 's = "(]"',
+        output: "false"
+      }
+    ],
+    constraints: [
+      "1 <= s.length <= 10^4",
+      "s consists of parentheses only '()[]{}'."
+    ],
+    hints: [
+      "Use a stack to keep track of opening brackets.",
+      "When you encounter a closing bracket, check if it matches the most recent opening bracket."
+    ],
+    testCases: [
+      { input: { s: "()" }, expectedOutput: true },
+      { input: { s: "()[]{}" }, expectedOutput: true },
+      { input: { s: "(]" }, expectedOutput: false },
+      { input: { s: "([)]" }, expectedOutput: false }
+    ],
+    solutions: [
+      {
+        language: "JavaScript",
+        code: `function isValid(s) {
+    const stack = [];
+    const mapping = { ')': '(', '}': '{', ']': '[' };
+    
+    for (const char of s) {
+        if (char in mapping) {
+            const topElement = stack.length ? stack.pop() : '#';
+            if (mapping[char] !== topElement) {
+                return false;
+            }
+        } else {
+            stack.push(char);
+        }
+    }
+    
+    return stack.length === 0;
+}`,
+        timeComplexity: "O(n)",
+        spaceComplexity: "O(n)"
+      }
+    ],
+    relatedTopics: ["String", "Stack"],
+    premium: false
+  },
+  {
+    id: "climbing-stairs",
+    title: "Climbing Stairs",
+    difficulty: "Easy",
+    category: "Dynamic Programming",
+    companies: ["Amazon", "Google", "Microsoft", "Apple", "Meta (Facebook)", "Bloomberg", "Adobe", "Capital One"],
+    acceptanceRate: 51.3,
+    description: `You are climbing a staircase. It takes n steps to reach the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?`,
+    examples: [
+      {
+        input: "n = 2",
+        output: "2",
+        explanation: "There are two ways to climb to the top. 1. 1 step + 1 step 2. 2 steps"
+      },
+      {
+        input: "n = 3",
+        output: "3",
+        explanation: "There are three ways to climb to the top. 1. 1 step + 1 step + 1 step 2. 1 step + 2 steps 3. 2 steps + 1 step"
+      }
+    ],
+    constraints: [
+      "1 <= n <= 45"
+    ],
+    hints: [
+      "This is a classic dynamic programming problem.",
+      "Think about the Fibonacci sequence - the number of ways to reach step n is the sum of ways to reach step n-1 and step n-2."
+    ],
+    testCases: [
+      { input: { n: 2 }, expectedOutput: 2 },
+      { input: { n: 3 }, expectedOutput: 3 },
+      { input: { n: 4 }, expectedOutput: 5 },
+      { input: { n: 5 }, expectedOutput: 8 }
+    ],
+    solutions: [
+      {
+        language: "JavaScript",
+        code: `function climbStairs(n) {
+    if (n <= 2) return n;
+    
+    let prev2 = 1;
+    let prev1 = 2;
+    
+    for (let i = 3; i <= n; i++) {
+        const current = prev1 + prev2;
+        prev2 = prev1;
+        prev1 = current;
+    }
+    
+    return prev1;
+}`,
+        timeComplexity: "O(n)",
+        spaceComplexity: "O(1)"
+      }
+    ],
+    relatedTopics: ["Math", "Dynamic Programming", "Memoization"],
+    premium: false
+  },
+  {
+    id: "maximum-subarray",
+    title: "Maximum Subarray",
+    difficulty: "Medium",
+    category: "Array",
+    companies: ["Amazon", "Google", "Microsoft", "Apple", "Meta (Facebook)", "Bloomberg", "Adobe", "Plaid", "Capital One"],
+    acceptanceRate: 48.9,
+    description: `Given an integer array nums, find the subarray with the largest sum, and return its sum.`,
+    examples: [
+      {
+        input: "nums = [-2,1,-3,4,-1,2,1,-5,4]",
+        output: "6",
+        explanation: "The subarray [4,-1,2,1] has the largest sum 6."
+      },
+      {
+        input: "nums = [1]",
+        output: "1",
+        explanation: "The subarray [1] has the largest sum 1."
+      },
+      {
+        input: "nums = [5,4,-1,7,8]",
+        output: "23",
+        explanation: "The subarray [5,4,-1,7,8] has the largest sum 23."
+      }
+    ],
+    constraints: [
+      "1 <= nums.length <= 10^5",
+      "-10^4 <= nums[i] <= 10^4"
+    ],
+    hints: [
+      "Use Kadane's algorithm - keep track of the maximum sum ending at each position.",
+      "If the current sum becomes negative, reset it to 0."
+    ],
+    testCases: [
+      { input: { nums: [-2, 1, -3, 4, -1, 2, 1, -5, 4] }, expectedOutput: 6 },
+      { input: { nums: [1] }, expectedOutput: 1 },
+      { input: { nums: [5, 4, -1, 7, 8] }, expectedOutput: 23 },
+      { input: { nums: [-1] }, expectedOutput: -1 }
+    ],
+    solutions: [
+      {
+        language: "JavaScript",
+        code: `function maxSubArray(nums) {
+    let maxSum = nums[0];
+    let currentSum = nums[0];
+    
+    for (let i = 1; i < nums.length; i++) {
+        currentSum = Math.max(nums[i], currentSum + nums[i]);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+    
+    return maxSum;
+}`,
+        timeComplexity: "O(n)",
+        spaceComplexity: "O(1)"
+      }
+    ],
+    relatedTopics: ["Array", "Divide and Conquer", "Dynamic Programming"],
+    premium: false
   }
 ];
 
@@ -769,12 +956,17 @@ export const categories = [
 ];
 
 export const companies = [
-  "Google", "Amazon", "Microsoft", "Facebook", "Apple", "Netflix", "Uber", "Airbnb",
+  "Google", "Amazon", "Microsoft", "Meta (Facebook)", "Apple", "Netflix", "Uber", "Airbnb",
   "Bloomberg", "Adobe", "Twitter", "LinkedIn", "Snapchat", "Pinterest", "Dropbox",
   "Salesforce", "Oracle", "IBM", "Intel", "Nvidia", "Tesla", "SpaceX", "Palantir",
   "Stripe", "Square", "PayPal", "Visa", "Mastercard", "Goldman Sachs", "JPMorgan",
   "Morgan Stanley", "Citadel", "Two Sigma", "Jane Street", "DE Shaw", "Hudson River Trading",
-  "Akuna Capital", "Optiver", "IMC", "Flow Traders", "DRW", "Jump Trading", "Virtu Financial"
+  "Akuna Capital", "Optiver", "IMC", "Flow Traders", "DRW", "Jump Trading", "Virtu Financial",
+  "Plaid", "Capital One", "American Express", "Wells Fargo", "Bank of America", "Chase",
+  "Shopify", "Spotify", "Zoom", "Slack", "Atlassian", "Snowflake", "Databricks",
+  "MongoDB", "Redis", "Elastic", "Twilio", "SendGrid", "Mailchimp", "HubSpot",
+  "ServiceNow", "Workday", "Salesforce", "Tableau", "Looker", "Figma", "Canva",
+  "Robinhood", "Coinbase", "Kraken", "Binance", "Gemini", "FTX", "Crypto.com"
 ];
 
 export const difficulties = ["Easy", "Medium", "Hard"] as const;

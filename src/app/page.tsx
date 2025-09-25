@@ -35,12 +35,21 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Master Coding Interviews
+              William's LeetCode Premium
             </h1>
+            <h2 className="text-3xl font-semibold mb-4 text-muted-foreground">
+              Master Coding Interviews
+            </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Practice with real interview questions from top tech companies. 
               Build confidence and land your dream job.
             </p>
+            <div className="mb-6">
+              <Link href="/sources" className="inline-flex items-center text-sm text-primary hover:underline">
+                <CheckCircle className="h-4 w-4 mr-1" />
+                Verified problems from real interviews
+              </Link>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/problems">
