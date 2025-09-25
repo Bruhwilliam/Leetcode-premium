@@ -51,7 +51,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
     @apply bg-background text-foreground;
@@ -107,12 +107,50 @@ code {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Gradient text */
+/* Beautiful Pastel Gradients */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.gradient-bg-primary {
+  background: linear-gradient(135deg, rgba(168, 237, 234, 0.3) 0%, rgba(254, 214, 227, 0.3) 50%, rgba(210, 153, 194, 0.3) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.gradient-bg-secondary {
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.2) 0%, rgba(221, 160, 221, 0.2) 50%, rgba(173, 216, 230, 0.2) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.gradient-bg-accent {
+  background: linear-gradient(135deg, rgba(255, 218, 185, 0.25) 0%, rgba(255, 192, 203, 0.25) 50%, rgba(221, 160, 221, 0.25) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-button {
+  background: linear-gradient(135deg, rgba(168, 237, 234, 0.8) 0%, rgba(254, 214, 227, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.gradient-button:hover {
+  background: linear-gradient(135deg, rgba(168, 237, 234, 1) 0%, rgba(254, 214, 227, 1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(168, 237, 234, 0.3);
 }
 
 /* Custom button hover effects */
